@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="text-3xl font-bold underline">Navbar</h1>
+    <h1>Navbar</h1>
 </body>
-<script src="https://cdn.tailwindcss.com"></script>
 </html>
