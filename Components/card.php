@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,66 +8,55 @@
     <title>Comment</title>
 </head>
 <style>
+   
     .profile-card {
-        width: 300px;
-        height: 400px;
-        border: 1px solid #ccc;
-        padding: 10px;
+    width: 800px;
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     }
-    .profile-picture{
-        width: 200px;
-        height: 200px;
+    .message{
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+
+    .profile-pic img{
+        width: 80px;
+        height: 80px;
         border-radius: 100px;
         overflow: hidden;
-        margin: 0 auto;
-
+        margin-left: 60px;
     }
-    .profile-picture img{
-        width: 200px;
-        height: 200px;
-    }
-    #comment-box{
-        width: 170px;
-        height: 30px;
-        padding: 15px;
-        border-radius: 20px;
-        background-color: #f5f5f5;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        text-align: center;
+    
+   
+    #like-btn, #comment-btn, #save-btn {
+        
+        border: none;
     }
 </style>
 <body>
     <div class="profile-card">
         <div class="profile-pic">
-            <img src="/Components/Pitures/cardDino.jpg" alt="">
+            <img src="/Components/Pictures/cha eunwoo.jpg" alt="">
          </div>
          <div class="message">
-            <input type="text" name="" id="">//check condition
-            <i class="fa-solid fa-circle-plus"><input type="image" src="" alt=""></i>//font awesome to input image
+            
+            <i class="fa-solid fa-circle-plus"></i>
          </div>
          <div class="interation">
             <div id="interac-btn">
                 <button id="like-btn"><i class="fa-regular fa-heart"></i>Like</button>
-                <button id="comment-btn"><i class="fa-regular fa-comment"></i>Comment</button>//onclick appear submit comment
-                <button id="save"><i class="fa-regular fa-bookmark"></i></button>//save
+                <button id="comment-btn"><i class="fa-regular fa-comment"></i>Comment</button>
+                <button id="save-btn"><i class="fa-regular fa-bookmark"></i></button>
             </div>
-            <div id="comment-box">
-                <div>
-                    <img src="/Components/Pitures/cardDino.jpg" alt="">//jab picture pi log in acc
-                </div>
-                <button type="submit" id="add-comment">
-                    <p >Add a comment...</p>//onclick disappear
-                    <i id="addcommentpic"class="fa-regular fa-image"></i>
-                </button>
-                <button type="submit"></button>//onclick submit the text from add-comment 
-            </div>
-            <div id="comment-history">//show if have any comment
-                <div>
-                    <img src="/Components/Pitures/cardDino.jpg" alt="">//store previous comment
-                </div>
-
-            </div>
+            
          </div>
     </div>
 </body>
