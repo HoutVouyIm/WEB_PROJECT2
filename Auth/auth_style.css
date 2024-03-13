@@ -1,0 +1,89 @@
+/* body{
+    background-color: #344a72;
+} */
+body {
+    /* height: 100%; Make sure the body and html take up full viewport height */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    background-color: white; /* Optional: background color of the page */
+}
+/* .signup_box{
+    width: 100%;
+    height: 620px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+} */
+
+.signup_box {
+    /* width: 40%; Adjust width to your preference, e.g., 40% of the viewport width */
+    max-width: 500px; /* Optional: Prevents the box from becoming too wide on large screens */
+    min-width: 300px; /* Optional: Ensures box isn't too narrow on small screens */
+    padding: 20px; /* Adds some space inside the box around your elements */
+    /* background-color: white; */
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); Optional: Adds a subtle shadow around the box */
+}
+
+.login_box {
+    width: 360px;
+    height: 270px;
+    margin: auto;
+    border-radius:3px;
+    background-color: white; 
+}
+h1{
+    text-align: center;
+    padding-top: 15px;
+}
+h4{
+    text-align: center;
+    margin-top: -15px;
+    color: gray;
+}
+/* form {
+    width: 80%;
+    margin: 20%;
+} */
+form label{
+    display: flex;
+    margin-top: 25px;
+    font-size: 16px;
+}
+form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+
+input[type="button"]{
+    width: 100%;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #FF9201;
+    color: white;
+}
+p{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.para-2 {
+    text-align: center;
+    /* color: white; */
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+.para-2 a {
+    color: #FF9201;
+}
+
+
