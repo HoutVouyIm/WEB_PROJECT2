@@ -79,7 +79,7 @@
      align-items: center;
      font-size: 13px;
     }
-}
+
 
 .image-upload label {
   display: flex;
