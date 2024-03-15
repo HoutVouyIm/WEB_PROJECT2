@@ -311,7 +311,7 @@
                     </div>
                     <div class="name">
                         <p>Ty Sonita</p>
-                        <!-- <p class="day">4 day ago</p> -->
+                        <
                     </div>
                 </div>
                 <div id="add-card">
