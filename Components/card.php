@@ -25,7 +25,7 @@
     }
     .profile-card {
         margin:0 auto;
-        /* margin-top: 20px; */
+        
         width: 85%;
         border-radius: 15px;
         box-shadow: 0px 0px 2px 2px #dad4d4;
@@ -65,12 +65,12 @@
     }
 
     .message {
-        /* text-align: center; */
+        
         width: 90%;
         padding: 15px 30px;
         font-size: 20px;
         color: gray;
-        /* border: 2px solid black; */
+        
     }
 
     .interaction {
@@ -133,11 +133,11 @@
         font-size: 16px;
     }
         .message {
-        /* width: 90%; */
+        
         padding: 15px 30px;
         font-size: 20px;
         color: gray;
-        /* border: 2px solid black; */
+     
     }
         .interaction {
         padding: 30px;
@@ -199,11 +199,11 @@
         font-size: 16px;
     }
         .message {
-        /* width: 90%; */
+        
         padding: 15px 30px;
         font-size: 18px;
         color: gray;
-        /* border: 2px solid black; */
+        
     }
         .interaction {
         padding: 30px;
@@ -269,7 +269,7 @@
         padding: 15px 30px;
         font-size: 16px;
         color: gray;
-        /* border: 2px solid black; */
+        
     }
         .interaction {
         padding: 30px;
@@ -311,7 +311,6 @@
                     </div>
                     <div class="name">
                         <p>Ty Sonita</p>
-                        <!-- <p class="day">4 day ago</p> -->
                     </div>
                 </div>
                 <div id="add-card">
