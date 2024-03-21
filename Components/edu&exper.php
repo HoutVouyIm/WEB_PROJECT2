@@ -144,7 +144,7 @@
       <div class="part2">
             <div class="flex-text">
                 <div class="prf">
-                    <a href=""></a>
+                    <a href=""><img src="" alt=""></a>
                 </div>
                 <div class="info">
                     <h4>Royal University of Phnom Penh</h4>
@@ -154,7 +154,7 @@
 
             <div class="flex-text">
                 <div class="prf">
-                    <a href=""></a>
+                    <a href=""><img src="" alt=""></a>
                 </div>
                 <div class="info">
                     <h4>Royal University of Phnom Penh</h4>
@@ -166,7 +166,7 @@
             <h3>Experience</h3>
             <div class="flex-text">
                 <div class="prf">
-                    <a href=""></a>
+                    <a href=""><img src="" alt=""></a>
                 </div>
                 <div class="info">
                     <h4>Web Developer</h4>
