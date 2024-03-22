@@ -11,12 +11,13 @@
         margin: 0;
     }
     #sidebar {
-        width: 240px;
+        width: 300px;
         height: 98vh;
-        border-radius: 20px;
-        box-shadow: 0px 0px 2px 2px #dad4d4;
+        /* border-radius: 20px; */
+        /* box-shadow: 0px 0px 2px 2px #dad4d4; */
         padding: 10px;
-        
+        background-color: white;
+        margin-left: 30px;
     }
     
 
@@ -58,7 +59,7 @@
         background-color:#FF9201;
         }
     #head-bar{
-        padding-top: 20px;
+        /* padding-top: 20px; */
     }
     #bottom-bar{
         margin-top: 490px;

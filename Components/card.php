@@ -21,12 +21,9 @@
     }
     .container {
         margin:0 auto;
-        width: 80%;
+        width: 80%; 
     }
     .profile-card {
-        margin:0 auto;
-        
-        width: 85%;
         border-radius: 15px;
         box-shadow: 0px 0px 2px 2px #dad4d4;
     }
@@ -104,7 +101,7 @@
             width: 100%;
         }
         .profile-card {
-            width: 90%;
+            /* width: 90%; */
             box-shadow: 0px 0px 2px 2px #dad4d4;
         }
         .profile {
@@ -170,7 +167,7 @@
             width: 100%;
         }
         .profile-card {
-            width: 90%;
+            /* width: 90%; */
             box-shadow: 0px 0px 2px 2px #dad4d4;
         }
         .profile {

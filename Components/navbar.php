@@ -10,7 +10,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 20px;
+        padding: 20px 0px;
+        margin: 0px 30px;
         /* background-color: #f0f0f0; */
         }
 
