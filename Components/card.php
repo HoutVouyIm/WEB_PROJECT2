@@ -19,10 +19,6 @@
     * {
         box-sizing: border-box;
     }
-    .container {
-        margin:0 auto;
-        width: 80%; 
-    }
     .profile-card {
         border-radius: 15px;
         box-shadow: 0px 0px 2px 2px #dad4d4;
@@ -62,12 +58,10 @@
     }
 
     .message {
-        
-        width: 90%;
+        /* width: 90%; */
         padding: 15px 30px;
         font-size: 20px;
-        color: gray;
-        
+        color: gray;  
     }
 
     .interaction {
@@ -294,7 +288,6 @@
         }
     }
     }
-    
 </style>
 
 <body>

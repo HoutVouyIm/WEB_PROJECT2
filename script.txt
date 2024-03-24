@@ -1,0 +1,51 @@
+##  Create Database ProjectWeb
+
+    CREATE DATABASE PROJECTWEB_DB;
+
+## Create  TABLE user_tb
+
+    CREATE TABLE user_tb (
+	id INT AUTO_INCREMENT PRIMARY KEY,  
+    full_name  varchar(255),
+    user_name  varchar(255),
+    email      varchar(255),
+    password   varchar(255),
+    position   varchar(255),
+    gender     varchar(6),
+    dob        date,
+    phone      varchar(20),
+    image      varchar(20)
+);
+
+## Create TABLE category_tb
+
+CREATE TABLE category_tb (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        category_name VARCHAR(255)
+);
+
+## Insert data into Table category_tb
+
+INSERT INTO category_tb (category_name) 
+VALUES 
+("Web Developer"),
+("Front End Developer"),
+("Back End Developer"),
+("UX/UI Designer"),
+("Teacher"),
+("Marking"),
+("Engineering"),
+("Accounting");
+
+## CREATE TABLE create_post_tb
+
+CREATE TABLE create_post_tb(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title TEXT,
+    des TEXT,
+    image VARCHAR(255),
+    user_id INT,
+    category_id INT,
+    FOREIGN KEY (user_id) REFERENCES user_tb(id),
+    FOREIGN KEY (category_id) REFERENCES category_tb(id)
+);

@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Connect DB</h1>
-</body>
-</html>
+<?php
+    $server = "localhost";
+    $user_name = "root";
+    $password ="";
+    $db_name = "PROJECTWEB_DB";
+
+    $conn = mysqli_connect($server, $user_name, $password, $db_name);
+
+    if($conn){
+    }else{
+        echo "Connect Faild";
+    }
+?>

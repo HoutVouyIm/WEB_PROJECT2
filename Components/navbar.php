@@ -7,41 +7,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0px;
-        margin: 0px 30px;
-        /* background-color: #f0f0f0; */
+            width: 100vw; 
+        }
+
+        .navbar_style {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px;
         }
 
         .logo {
         font-size: 20px;
         font-weight: bold;
         color: #333;
-        }
-
-        .search-bar {
-        display: flex;
-        align-items: center;
-        background-color: gray;
-        border-radius: 5px;
-        padding: 5px;
-        }
-
-        .search-bar input {
-        border: none;
-        outline: none;
-        padding: 5px;
-        font-size: 16px;
-        width: 100%;
-        }
-
-        .search-bar button {
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        }
+        }      
 
         .signup-btn {
         padding: 10px 15px;
@@ -52,46 +32,35 @@
         font-weight: bold;
         }
 
-        .menu-icon {
-        display: none;
-        }
-
-        /* Media Queries for responsiveness */
-       /* @media screen and (max-width: 768px) {
-        .navbar {
-            flex-wrap: wrap;
-        }
-
-        .search-bar,
-        .login-signup {
-            display: none;
-        }
-
-        .menu-icon {
-            display: block;
-        }
-        }  */
-
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="#" class="logo">Your Logo</a>
-        
-        <!-- <div class="search-bar" id="searchBar">
-            <input type="text" placeholder="Search">
-            <button type="button"><i class="fas fa-search"></i></button>
-        </div> -->
+        <div class="navbar_style">
 
-        <div class="login-signup">
-            <a href="#" class="login-btn">Login</a>
-            <a href="#" class="signup-btn" id="SignupBtn">Sign Up</a>
+            <a href="#" class="logo">Your Logo</a>
+
+
+        <?php
+        session_start();
+        if(isset($_SESSION['id']) && isset($_SESSION['email'])){
+        ?>
+            <div>
+                <?php echo $_SESSION['full_name'] ?>
+            </div>
+
+        <?php
+            }else{
+                
+                echo '<div class="login-signup">
+                        <a href="../Auth/login.php" class="login-btn">Login</a>
+                        <a href="../Auth/register.php" class="signup-btn" id="SignupBtn">Sign Up</a>
+                    </div>';
+
+            }
+        ?>
+
         </div>
-        
-        <!-- <div class="menu-icon" id="menuIcon">
-            <i class="fas fa-bars"></i>
-        </div> -->
-
     </nav>
 </body>
 </html>

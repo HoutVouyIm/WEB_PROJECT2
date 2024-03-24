@@ -73,7 +73,7 @@
       </div>
 
       <div class="person">
-        <img src="person1.jpg" alt="Person 1" />
+        <img src="" alt="Person 1" />
         <div class="person-details">
           <p class="name">Ta Nit</p>
           <p class="role">Teacher</p>

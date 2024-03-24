@@ -1,3 +1,6 @@
+<?php
+    include '../ConnectDB/connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,81 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Post</title>
 <style>
-    body {
-  font-family: Ubuntu,sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
-.container {
-  width: 600px;
-  margin: 50px auto;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.container h1 {
-  text-align: left;
-  font-size: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-}
-
-.post-info {
-  text-align: right;
-  margin-bottom: 20px;
-}
-
-.post-info input {
-  width: 45%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 11px;
-}
-
-.post-info select {
-  width: 25%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 11px;
-}
-
-.post-content {
-  margin-bottom: 20px;
-  text-align: center;
+.post_style {
   display: flex;
   flex-direction: row;
-  align-items: right;
-  height: 250px;
-}
-
-.post-content textarea {
-  text-align:left;
-  width: 70%;
+  justify-content: space-between;
+  gap: 10px;
   height: 200px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 13px;
-  margin: 0 auto;
 }
 
 .image-upload {
      display: flex;
      flex-direction: row;
      text-align: center;
-     width: 150px;
-     height: 150px;
      background-color: #ddd;
      border: 1px solid #ccc;
      border-radius: 3px;
      align-items: center;
      font-size: 13px;
-    }
-
+     max-width: 100%; 
+     max-height: 100%;
+}
 
 .image-upload label {
   display: flex;
@@ -90,67 +39,134 @@
   cursor: pointer;
 }
 
-.image-upload input[type="file"] {
+/* .image-upload input[type="file"] {
   display: none;
+} */
+
+.title_category_style {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.buttons {
-  text-align: right;
+.add_title {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
 }
 
-.buttons button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-right: 10px;
+.add_category {
+  width: 50%;
 }
-
-.buttons .cancel {
-  background-color: #b3afaf;
-  color: #fff;
+.add_des {
+  width: 100%;
+  height: 140px;
 }
-
-.buttons .post {
-  background-color: #FF6D00;
-  color: #fff;
+.button_style {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 5px;
+} 
+.btn_cancel {
+  padding: 10px;
+  border: 1px solid #ffff;
+  border-radius: 5px;
 }
-#content{
-  border-color: #FF6D00;
-}
-
-#category{
-  background-color: #FF6D00;
-  color: #fff;
+.btn_post {
+  padding: 10px 30px;
+  color: white;
+  background: #FF9201;
+  border: 1px solid #FF9201;
+  border-radius: 5px;
 }
 </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Create Post</h1>
-        <div class="post-info">
-            <input type="text" id="title" placeholder="Enter Title">
-            <select id="category">
-                <option value="">Choose Category</option>
-                <option value="Marketing">Marketing</option>
-                <option value="IT">IT</option>
-                <option value="HR">HR</option>
-            </select>
-        </div>
+  <form action="" method="POST" enctype="multipart/form-data">
+    <h1>Create Post</h1>
+    <div class="post_style">
+        <label class="image-upload" for="inputFile">
+            <!-- Image preview -->
+            <img id="previewImage" style="max-width: 100%; max-height: 100%;" src="../Assert/images/upload_image.jpeg"/>
+            <input type="file" name="image" id="inputFile" onchange="readUrl(this)" style="display: none;" accept=".jpg, .jpeg, .png">
 
-        <div class="post-content">
-            <div class="image-upload">
-                <label for="image">Drop your image here or Browse</label>
-                <input type="file" id="image">
-            </div>
-            <textarea id="content" placeholder="Write something here...."></textarea>
+        </label>
+
+        <div style="width: 30vw;">
+          <div class="title_category_style">
+            <input type="text" name="title" class="add_title" placeholder="Enter Title">
+
+            <select class="add_category" name="category_id">
+            <option>Choose Category</option>
+            <?php
+                $sql = "SELECT * FROM category_tb";
+                $result = $conn->query($sql);
+
+                while($row = $result->fetch_assoc()){
+                    echo "
+                      <option value=$row[category_id] >$row[category_name]</option>
+                    ";
+                }
+            ?>
+
+        </select>
+          </div>
+          <textarea class="add_des" name="des"></textarea>
         </div>
-        <div class="buttons">
-            <button type="button" class="cancel">Cancel</button>
-            <button type="button" class="post">Post</button>
-        </div>
-        
     </div>
+    <div class="button_style">
+        <button class="btn_cancel" type="submit" >Cancel</button>
+        <button class="btn_post" type="submit">Post</button>
+    </div>
+  </form>
+
+  <script>
+    var a = document.getElementById("previewImage");
+    function readUrl(input){
+      if(input.files){
+        var reader = new FileReader();
+        reader.readAsDataURL(input.files[0]);
+        reader.onload=(e)=>{
+          a.src = e.target.result;
+        }
+      
+      }
+    }
+
+  </script>
 </body>
+
+<?php
+    if(isset($_POST['submit'])){
+        
+        $title = $_POST['title'];
+        $des = $_POST['des'];
+        $category_id = $_POST['category_id'];
+
+        session_start();
+        if(isset($_SESSION['id']) && isset($_SESSION['email'])){
+          $user_id = $_GET['id'];
+
+        }
+
+        echo "
+            <script> alert($user_id); </script>
+        ";
+        
+        // $insert = " INSERT INTO `curd` (`name`, `email`, `phone`) VALUES ('$name', '$email', '$phone') ";
+        // $query = $conn->query($insert);
+       
+        // if($query){
+        //     echo "Add User Successfully";
+        //     header('location:/CONNECT_DB/index.php');
+        // }
+    }
+
+?>
 </html>

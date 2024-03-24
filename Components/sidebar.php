@@ -11,15 +11,14 @@
         margin: 0;
     }
     #sidebar {
-        width: 300px;
-        height: 98vh;
-        /* border-radius: 20px; */
-        /* box-shadow: 0px 0px 2px 2px #dad4d4; */
+        height: 90vh;
         padding: 10px;
-        background-color: white;
         margin-left: 30px;
     }
     
+    
+
+
 
     .list{
         margin:0;
@@ -58,12 +57,14 @@
         border-radius: 8px;
         background-color:#FF9201;
         }
-    #head-bar{
-        /* padding-top: 20px; */
+
+    .list_style {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
     }
-    #bottom-bar{
-        margin-top: 490px;
-    }
+    
     @media only screen and (max-width: 1200px) {
     #sidebar {
         width: 200px;
@@ -80,12 +81,9 @@
 
     @media only screen and (max-width: 768px) {
             #sidebar{
-               
-                width: 10px;
-                box-shadow: 0px 0px 2px 2px #FF9201;
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                /* justify-content: center; */
             }
 
             #sidebar ul.list div#head-bar li a p,
@@ -95,27 +93,47 @@
            
         }
 
-
-
 </style>
 <body>
     <div id="sidebar">
     <ul class="list">
+    <div class="list_style">
         <div id="head-bar">
-            
             <li><a href="#"><i class="fa-solid fa-house"></i><p>Home</p></a></li>
-            <li>
-                <a href="#">
-                    <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="">
-                <p>Profile</p>
-                </a>
-            </li>
-            <li><a href="#"><i class="fa-solid fa-people-group"></i><p>Connection</p></a></li>
-        </div>
-        <div id="bottom-bar">
-            <li><a href="#"><i class="fa-regular fa-circle-question"></i><p>Help & Support</p></a></li>
-            <li><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i><p>Logout</p></a></li>
-        </div>
+
+
+        <?php
+        session_start();
+        if(isset($_SESSION['id']) && isset($_SESSION['email'])){
+
+            echo '
+                <li>
+                    <a href="#">
+                        <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="">
+                    <p>Profile</p>
+                    </a>
+                </li>
+                <li><a href="#"><i class="fa-solid fa-people-group"></i><p>Connection</p></a></li>
+
+                </div>
+
+                <div id="bottom-bar">
+                    <li><a href="#"><i class="fa-regular fa-circle-question"></i><p>Help & Support</p></a></li>
+                    <li><a href="../Auth/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i><p>Logout</p></a></li>
+                </div>
+            ';
+
+            }else{
+                
+                echo '';
+
+            }
+        ?>
+
+        
+
+    </div>
+        
     </ul>
     </div>
 </body>
