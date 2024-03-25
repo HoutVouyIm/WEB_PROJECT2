@@ -87,13 +87,13 @@
     <div class="popup" id="popup-1">
         
         <?php
-            session_start();
+            // session_start();
             if(isset($_SESSION['id']) && isset($_SESSION['email'])){
             ?>
                 <?php include '../Components/create_post.php'; ?>
         <?php
             }else{
-                echo "<script> alert('Please Login'); </script>";
+                echo "<h1>Please Login</h1>";
             }
         ?>
     </div>

@@ -1,5 +1,6 @@
 <?php
     include '../ConnectDB/connect.php';
+    // session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,6 +90,7 @@
 </head>
 <body>
   <form action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : ''; ?>">
     <h1>Create Post</h1>
     <div class="post_style">
         <label class="image-upload" for="inputFile">
@@ -102,27 +104,29 @@
           <div class="title_category_style">
             <input type="text" name="title" class="add_title" placeholder="Enter Title">
 
-            <select class="add_category" name="category_id">
-            <option>Choose Category</option>
-            <?php
-                $sql = "SELECT * FROM category_tb";
-                $result = $conn->query($sql);
+          <?php
+            $sql = "SELECT id, category_name FROM `category_tb`";
+            $ca_results = mysqli_query($conn, $sql);
+          ?>
 
-                while($row = $result->fetch_assoc()){
-                    echo "
-                      <option value=$row[category_id] >$row[category_name]</option>
-                    ";
-                }
-            ?>
+          <select class="add_category" name="category_id">
+              <option>Choose Category</option>
+              <?php foreach($ca_results as $row) : ?>
+                  
+                      <option value="<?php echo $row['id']; ?>" name="">
+                          <?php echo $row['category_name']; ?>
+                      </option>
+                  
+              <?php endforeach; ?>
+          </select>
 
-        </select>
           </div>
           <textarea class="add_des" name="des"></textarea>
         </div>
     </div>
     <div class="button_style">
-        <button class="btn_cancel" type="submit" >Cancel</button>
-        <button class="btn_post" type="submit">Post</button>
+        <button class="btn_cancel" type="submit">Cancel</button>
+        <button class="btn_post" type="submit" name="add_post">Post</button>
     </div>
   </form>
 
@@ -143,30 +147,50 @@
 </body>
 
 <?php
-    if(isset($_POST['submit'])){
-        
-        $title = $_POST['title'];
-        $des = $_POST['des'];
-        $category_id = $_POST['category_id'];
+    if(isset($_POST['add_post'])){
+      $title = $_POST['title'];
+      $des = $_POST['des'];
+      $category_id = $_POST['category_id'];
+      $user_id = $_POST['user_id'];
+     
+      if($_FILES["image"]["error"] === 4){
+          echo "
+              <script> alert('Image Does Not Exist'); </script>
+          ";
+      }else{
+          $fileName = $_FILES["image"]["name"];
+          $fileSize = $_FILES["image"]["size"];
+          $tmpName  = $_FILES["image"]["tmp_name"];
 
-        session_start();
-        if(isset($_SESSION['id']) && isset($_SESSION['email'])){
-          $user_id = $_GET['id'];
+          $validImageExtension = ['jpg','jpeg','png'];
+          $imageExtension = explode('.', $fileName);
+          $imageExtension = strtolower(end($imageExtension));
 
-        }
+          if(!in_array($imageExtension, $validImageExtension)){
+              echo "
+                  <script> alert('Invalid Image Extension'); </script>
+              ";
+          }else if($fileSize > 1000000){
+              echo "
+                  <script> alert('Image Size Is Too Large'); </script>
+              ";
+          }else{
+              $newImageName = uniqid();
+              $newImageName .='.'.$imageExtension;
 
-        echo "
-            <script> alert($user_id); </script>
-        ";
-        
-        // $insert = " INSERT INTO `curd` (`name`, `email`, `phone`) VALUES ('$name', '$email', '$phone') ";
-        // $query = $conn->query($insert);
-       
-        // if($query){
-        //     echo "Add User Successfully";
-        //     header('location:/CONNECT_DB/index.php');
-        // }
-    }
+              move_uploaded_file($tmpName, '../Assert/images'. $newImageName);
+              $query = "INSERT INTO `create_post_tb` (`title`,`des`,`image`, `user_id`,`category_id`) 
+              VALUES('$title','$des','$newImageName','$user_id','$category_id')";
+              mysqli_query($conn, $query);
 
+              echo "
+                  <script> 
+                      alert('Successfully Added'); 
+                      document.location.href = '../Pages/index.php';
+                  </script>
+              ";
+          }
+      }
+  }
 ?>
 </html>
