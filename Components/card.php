@@ -1,3 +1,6 @@
+<?php
+    include '../ConnectDB/connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +31,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 30px;
+        padding: 20px;
     }
 
     .profile {
         display: flex;
         gap: 15px;
-
     }
 
     .fa-solid {
@@ -91,9 +93,9 @@
     }
 
     @media only screen and (max-width: 1200px) {
-        .container{
+        /* .container{
             width: 100%;
-        }
+        } */
         .profile-card {
             /* width: 90%; */
             box-shadow: 0px 0px 2px 2px #dad4d4;
@@ -157,9 +159,9 @@
     }
     }
     @media only screen and (max-width: 992px) {
-        .container{
+        /* .container{
             width: 100%;
-        }
+        } */
         .profile-card {
             /* width: 90%; */
             box-shadow: 0px 0px 2px 2px #dad4d4;
@@ -223,9 +225,9 @@
     }
     }
     @media only screen and (max-width: 768px) {
-        .container{
+        /* .container{
             width: 100%;
-        }
+        } */
         .profile-card {
             width: 100%;
             box-shadow: 0px 0px 2px 2px #dad4d4;
@@ -291,17 +293,31 @@
 </style>
 
 <body>
-    <div class="container">
+    <?php
+        $sql = "SELECT * FROM create_post_tb";
+        $results = mysqli_query($conn, $sql);
+    ?>
+    <?php foreach($results as $row) : ?>
+    <div class="container" style="margin-bottom: 20px;">
         <div class="profile-card">
             <div class="profile-pic">
                 <div class="profile">
+                    <?php
+                        $select_name_image = "SELECT full_name, image FROM user_tb WHERE id=" . $row['user_id'];
+                        $result_info_users = mysqli_query($conn, $select_name_image);
+                    ?>
+                    <?php foreach($result_info_users as $name_image): ?>
                     <div class="pic">
-                        <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
-                            alt="">
+                        <?php if($name_image['image'] === "null"): ?>
+                            <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="">
+                        <?php else: ?>
+                            <img src="../Assert/images/<?php echo $name_image['image']; ?>" style="border-radius: 50%; width: 50px; height: 50px;">
+                        <?php endif; ?>
                     </div>
                     <div class="name">
-                        <p>Ty Sonita</p>
+                        <p style="padding-top:10px;"><?php echo $name_image['full_name']; ?></p> 
                     </div>
+                    <?php endforeach; ?>
                 </div>
                 <div id="add-card">
                     <i class="fa-solid fa-plus"></i>
@@ -309,10 +325,10 @@
             </div>
             <hr>
             <div class="message">
-                <h3>Hello to all viewers!!</h3>
-                <p>I'm currently unemployed and broke as hell🫠</p>
-                <p>So I'm here to look for a job.</p>
-                <p>Thanks</p>
+                <h3 style="text-align: left;"><?php echo $row['title']; ?></h3>
+                <!-- <p>I'm currently unemployed and broke as hell🫠</p> -->
+                <p style="text-align: left;"><?php echo $row['des'] ?></p>
+                <img src="../Assert/images/<?php echo $row['image']; ?>" alt="image" style="max-width: 100%; max-height: 30vh; object-fit: cover;" />
             </div>
             <hr>
             <div class="interaction">
@@ -327,7 +343,7 @@
             </div>
         </div>
     </div>
-
+    <?php endforeach; ?>
 </body>
 
 </html>

@@ -12,9 +12,8 @@
         padding: 0;
         box-sizing: border-box;
     }
-    .container {
-        width:800px;
-        
+    .container-edu-exper {
+        width: 70vw;
         margin: 0 auto;
         border: 1px solid #ddd;
         border-radius: 10px;
@@ -28,17 +27,12 @@
     }
 
     .icon{
-        
-       
         display: inline;
         margin-left: 16px;
-        
+        cursor: pointer;
     }
     .part2{
         height: 160px;
-      
-       
-       
     }
     .prf{
         width: 50px;
@@ -59,8 +53,24 @@
         padding-top: 10px;
     }
 
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        z-index: 1000;
+        display: none;
+    }
+
+    #popup-addinfo.active {
+        display: block;
+    }
+
     @media (max-width: 1200px) {
-    .container {
+    .container-edu-exper {
       padding: 20px;
     }
 
@@ -84,7 +94,7 @@
   }
 
   @media (max-width: 992px) {
-    .container {
+    .container-edu-exper {
       padding: 15px;
     }
 
@@ -108,9 +118,6 @@
   }
 
   @media (max-width: 768px) { 
-    .container {
-         width: 100%; padding: 10px; 
-        } 
     .part1 { 
         height: 15px; 
     } 
@@ -133,11 +140,11 @@
         
 </style>
 <body>
-    <div class="container">
+    <div class="container-edu-exper">
       <div class="part1">
             <h3>Education</h3>
             <div class="icon">
-                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-plus" onclick="togglePopupAddInfo()"></i>
                 <i class="fa-solid fa-pencil"></i>
             </div>
       </div>
@@ -176,5 +183,13 @@
       </div>
     </div>
 
+    <div class="popup" id="popup-addinfo">
+        <?php include '../Components/Addinformation.php'; ?>
+    </div>
 </body>
+<script>
+    function togglePopupAddInfo(){
+        document.getElementById("popup-addinfo").classList.toggle("active");
+    }
+</script>
 </html>

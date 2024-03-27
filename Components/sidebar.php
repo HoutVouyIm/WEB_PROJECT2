@@ -10,16 +10,7 @@
     *{
         margin: 0;
     }
-    #sidebar {
-        height: 90vh;
-        padding: 10px;
-        margin-left: 30px;
-    }
     
-    
-
-
-
     .list{
         margin:0;
         padding:0;
@@ -31,7 +22,6 @@
 
     #sidebar ul li a{
         display: flex;
-        
         align-items:center;
         gap: 15px;
 
@@ -59,39 +49,26 @@
         }
 
     .list_style {
-        height: 90vh;
+        position: fixed;
+        top: 100px;
+        left: 0;
+        height: 80vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-between; 
+        justify-content: space-between;
+        margin-left: 30px; 
     }
     
     @media only screen and (max-width: 1200px) {
-    #sidebar {
-        width: 200px;
-    }
-}
-
-
-@media only screen and (max-width: 992px) {
-    #sidebar {
-        width: 150px;
-    }
-}
-
-
-    @media only screen and (max-width: 768px) {
-            #sidebar{
-                display: flex;
-                align-items: center;
-                /* justify-content: center; */
-            }
-
-            #sidebar ul.list div#head-bar li a p,
-            #sidebar ul.list div#bottom-bar li a p {
-                display: none; 
-            }
-           
+        #sidebar {
+            display: flex;
+            align-items: center;
         }
+        #sidebar ul.list div#head-bar li a p,
+        #sidebar ul.list div#bottom-bar li a p {
+            display: none; 
+        }
+    }
 
 </style>
 <body>
@@ -99,7 +76,7 @@
     <ul class="list">
     <div class="list_style">
         <div id="head-bar">
-            <li><a href="#"><i class="fa-solid fa-house"></i><p>Home</p></a></li>
+            <li><a href="../Pages/index.php"><i class="fa-solid fa-house"></i><p>Home</p></a></li>
 
 
         <?php
@@ -108,12 +85,12 @@
 
             echo '
                 <li>
-                    <a href="#">
+                    <a href="../Pages/profile.php">
                         <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="">
                     <p>Profile</p>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa-solid fa-people-group"></i><p>Connection</p></a></li>
+                <li><a href="../Pages/connect-friend.php"><i class="fa-solid fa-people-group"></i><p>Connection</p></a></li>
 
                 </div>
 
@@ -129,8 +106,6 @@
 
             }
         ?>
-
-        
 
     </div>
         

@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>write2post</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
 
     .post-bar {
-        width: 100%;
+        /* width: 100%; */
         height: 60px;
         box-shadow: 0px 0px 2px 2px #FF9201;
         border-radius: 10px;
@@ -77,7 +78,7 @@
 </style>
 <body>
     <div class="post-bar">
-        <div class="post-input" style="margin-bottom: 20px;" onclick="togglePopup()">
+        <div class="post-input" style="margin-bottom: 20px;" onclick="checkLogin()">
             <input type="text" class="input" placeholder="Write here to post">
         </div>
 
@@ -85,23 +86,32 @@
     </div>
 
     <div class="popup" id="popup-1">
-        
-        <?php
-            // session_start();
-            if(isset($_SESSION['id']) && isset($_SESSION['email'])){
-            ?>
-                <?php include '../Components/create_post.php'; ?>
-        <?php
-            }else{
-                echo "<h1>Please Login</h1>";
-            }
-        ?>
+       <?php include '../Components/create_post.php'; ?>
     </div>
 
     <script>
         function togglePopup(){
             document.getElementById("popup-1").classList.toggle("active");
         }
+
+        function showSweetAlert() {
+            Swal.fire({
+                title: 'Please Login',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        function  checkLogin(){
+            <?php if(isset($_SESSION['id']) && isset($_SESSION['email'])) { ?>
+                // User is logged in, open the post creation popup
+                togglePopup();
+            <?php } else { ?>
+                // User is not logged in, show SweetAlert
+                showSweetAlert();
+            <?php } ?>
+        }
+
     </script>
 
 </body>

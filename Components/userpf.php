@@ -16,12 +16,13 @@
         }
         .profile-card {
             position: relative;
-            width: 80vw;
+            width: 70vw;
             margin: 40px auto;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             /* background-color: rgb(242, 237, 237); */
             /* padding: 40px; */
             border-radius: 20px;
+            margin-top: 100px;
         }
 
         .cover {
@@ -53,6 +54,7 @@
             position: absolute;
             right: 20px;
             padding: 20px;
+            cursor: pointer;
         }
 
         .profile-info {
@@ -94,6 +96,21 @@
             color: grey;
         }
         
+        .popup_edit_pro {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup_edit_pro.active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -108,7 +125,7 @@
                 </a>
             </div>
         </div>
-        <div class="edit">
+        <div class="edit" onclick="togglePopup()">
             <i class="fa-solid fa-pen-to-square"></i>
         </div>
         <div class="profile-info">
@@ -134,6 +151,14 @@
             </div>
         </div>
     </div>
-</body>
 
+    <div class="popup_edit_pro" id="popup-edit-pro">
+       <?php include '../Components/edit_profile.php'; ?>
+    </div>
+</body>
+<script>
+    function togglePopup(){
+        document.getElementById("popup-edit-pro").classList.toggle("active");
+    }
+</script>
 </html>

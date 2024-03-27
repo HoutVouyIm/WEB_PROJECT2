@@ -178,7 +178,7 @@
               $newImageName = uniqid();
               $newImageName .='.'.$imageExtension;
 
-              move_uploaded_file($tmpName, '../Assert/images'. $newImageName);
+              move_uploaded_file($tmpName, '../Assert/images/'. $newImageName);
               $query = "INSERT INTO `create_post_tb` (`title`,`des`,`image`, `user_id`,`category_id`) 
               VALUES('$title','$des','$newImageName','$user_id','$category_id')";
               mysqli_query($conn, $query);
